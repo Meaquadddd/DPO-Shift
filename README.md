@@ -35,4 +35,4 @@ set `OLLAMA_BINARY` in `ollama-batch-servers` with your ollama binary path
  bash ./ollama-batch-servers numbers_of_your_GPU # start ollama processes
  bash ./run.sh # to generate judges
 ```
-5. The judgment is recorded in the `judges` files
+5. The judgment is recorded in the `judges` folder
