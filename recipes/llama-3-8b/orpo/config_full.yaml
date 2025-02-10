@@ -1,0 +1,69 @@
+# Model arguments
+model_name_or_path: /223040132/model/hub/LLM-Research/Meta-Llama-3-8B
+torch_dtype: bfloat16
+use_flash_attention_2: true
+torch_compile: true
+
+# LoRA arguments
+# use_peft: true
+# load_in_4bit: true
+# lora_r: 8
+# lora_alpha: 32
+# lora_dropout: 0.05
+# lora_target_modules:
+# - q_proj
+# - k_proj
+# - v_proj
+# - o_proj
+# - gate_proj
+# - up_proj
+# - down_proj
+
+# Data training arguments
+# chat_template: "{% for message in messages %}{{'<|im_start|>' + message['role'] + '\n' + message['content'] + '<|im_end|>' + '\n'}}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant\n' }}{% endif %}"
+chat_template: "{% for message in messages %}\n{% if message['role'] == 'user' %}\n{{ '<|user|>\n' + message['content'] + eos_token }}\n{% elif message['role'] == 'system' %}\n{{ '<|system|>\n' + message['content'] + eos_token }}\n{% elif message['role'] == 'assistant' %}\n{{ '<|assistant|>\n'  + message['content'] + eos_token }}\n{% endif %}\n{% if loop.last and add_generation_prompt %}\n{{ '<|assistant|>' }}\n{% endif %}\n{% endfor %}"
+dataset_mixer:
+  HuggingFaceH4/ultrafeedback_binarized: 1.0
+dataset_splits:
+- train_prefs
+- test_prefs
+preprocessing_num_workers: 48
+
+# ORPOTrainer arguments
+bf16: true
+beta: 0.1
+do_eval: true
+evaluation_strategy: steps
+eval_steps: 50
+gradient_accumulation_steps: 2
+gradient_checkpointing: true
+gradient_checkpointing_kwargs:
+  use_reentrant: true
+# hub_model_id: zephyr-7b-dpo-qlora
+learning_rate: 5.0e-6
+dataset_num_proc: 48
+log_level: info
+logging_steps: 1
+# lr_scheduler_kwargs:
+#   min_lr: 1.0e-6
+# lr_scheduler_type: cosine_with_min_lr
+lr_scheduler_type: cosine
+max_length: 2048
+max_prompt_length: 1792
+num_train_epochs: 1
+optim: paged_adamw_32bit
+output_dir: /223040132/output/alignment_book/llama3-8b/full_adam 
+# It is handy to append `hub_model_revision` to keep track of your local experiments
+per_device_train_batch_size: 4
+per_device_eval_batch_size: 4
+push_to_hub: False
+report_to:
+- wandb
+save_strategy: "steps"
+save_steps: 954
+seed: 42
+## sspo arguments
+use_sspo: true
+sspo_lambda_min: 0
+sspo_lambda_max: 0.5
+sspo_lambda_scheduler: cosine

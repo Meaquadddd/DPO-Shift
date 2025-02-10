@@ -1,0 +1,13 @@
+model = "llama3.3"
+system_message = """You are a helpful assistant"""
+
+[ollama_instances]
+#format: "hostname:port" = GPU index
+"0.0.0.0:11432" = 0
+"0.0.0.0:11433" = 1
+"0.0.0.0:11434" = 2
+"0.0.0.0:11435" = 3
+"0.0.0.0:11436" = 4
+"0.0.0.0:11437" = 5
+"0.0.0.0:11438" = 6
+"0.0.0.0:11439" = 7

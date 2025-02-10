@@ -1,0 +1,1435 @@
+2025/01/17 21:04:11 routes.go:1259: INFO server config env="map[CUDA_VISIBLE_DEVICES:1 GPU_DEVICE_ORDINAL: HIP_VISIBLE_DEVICES: HSA_OVERRIDE_GFX_VERSION: HTTPS_PROXY: HTTP_PROXY: NO_PROXY: OLLAMA_DEBUG:false OLLAMA_FLASH_ATTENTION:false OLLAMA_GPU_OVERHEAD:0 OLLAMA_HOST:http://0.0.0.0:11433 OLLAMA_INTEL_GPU:false OLLAMA_KEEP_ALIVE:2h0m0s OLLAMA_KV_CACHE_TYPE: OLLAMA_LLM_LIBRARY: OLLAMA_LOAD_TIMEOUT:2h0m0s OLLAMA_MAX_LOADED_MODELS:0 OLLAMA_MAX_QUEUE:512 OLLAMA_MODELS:/home/zl/.ollama/models OLLAMA_MULTIUSER_CACHE:false OLLAMA_NOHISTORY:false OLLAMA_NOPRUNE:false OLLAMA_NUM_PARALLEL:16 OLLAMA_ORIGINS:[http://localhost https://localhost http://localhost:* https://localhost:* http://127.0.0.1 https://127.0.0.1 http://127.0.0.1:* https://127.0.0.1:* http://0.0.0.0 https://0.0.0.0 http://0.0.0.0:* https://0.0.0.0:* app://* file://* tauri://* vscode-webview://*] OLLAMA_SCHED_SPREAD:false ROCR_VISIBLE_DEVICES: http_proxy: https_proxy: no_proxy:]"
+time=2025-01-17T21:04:11.414+08:00 level=INFO source=images.go:757 msg="total blobs: 13"
+time=2025-01-17T21:04:11.414+08:00 level=INFO source=images.go:764 msg="total unused blobs removed: 0"
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] POST   /api/pull                 --> github.com/ollama/ollama/server.(*Server).PullHandler-fm (5 handlers)
+[GIN-debug] POST   /api/generate             --> github.com/ollama/ollama/server.(*Server).GenerateHandler-fm (5 handlers)
+[GIN-debug] POST   /api/chat                 --> github.com/ollama/ollama/server.(*Server).ChatHandler-fm (5 handlers)
+[GIN-debug] POST   /api/embed                --> github.com/ollama/ollama/server.(*Server).EmbedHandler-fm (5 handlers)
+[GIN-debug] POST   /api/embeddings           --> github.com/ollama/ollama/server.(*Server).EmbeddingsHandler-fm (5 handlers)
+[GIN-debug] POST   /api/create               --> github.com/ollama/ollama/server.(*Server).CreateHandler-fm (5 handlers)
+[GIN-debug] POST   /api/push                 --> github.com/ollama/ollama/server.(*Server).PushHandler-fm (5 handlers)
+[GIN-debug] POST   /api/copy                 --> github.com/ollama/ollama/server.(*Server).CopyHandler-fm (5 handlers)
+[GIN-debug] DELETE /api/delete               --> github.com/ollama/ollama/server.(*Server).DeleteHandler-fm (5 handlers)
+[GIN-debug] POST   /api/show                 --> github.com/ollama/ollama/server.(*Server).ShowHandler-fm (5 handlers)
+[GIN-debug] POST   /api/blobs/:digest        --> github.com/ollama/ollama/server.(*Server).CreateBlobHandler-fm (5 handlers)
+[GIN-debug] HEAD   /api/blobs/:digest        --> github.com/ollama/ollama/server.(*Server).HeadBlobHandler-fm (5 handlers)
+[GIN-debug] GET    /api/ps                   --> github.com/ollama/ollama/server.(*Server).PsHandler-fm (5 handlers)
+[GIN-debug] POST   /v1/chat/completions      --> github.com/ollama/ollama/server.(*Server).ChatHandler-fm (6 handlers)
+[GIN-debug] POST   /v1/completions           --> github.com/ollama/ollama/server.(*Server).GenerateHandler-fm (6 handlers)
+[GIN-debug] POST   /v1/embeddings            --> github.com/ollama/ollama/server.(*Server).EmbedHandler-fm (6 handlers)
+[GIN-debug] GET    /v1/models                --> github.com/ollama/ollama/server.(*Server).ListHandler-fm (6 handlers)
+[GIN-debug] GET    /v1/models/:model         --> github.com/ollama/ollama/server.(*Server).ShowHandler-fm (6 handlers)
+[GIN-debug] GET    /                         --> github.com/ollama/ollama/server.(*Server).GenerateRoutes.func1 (5 handlers)
+[GIN-debug] GET    /api/tags                 --> github.com/ollama/ollama/server.(*Server).ListHandler-fm (5 handlers)
+[GIN-debug] GET    /api/version              --> github.com/ollama/ollama/server.(*Server).GenerateRoutes.func2 (5 handlers)
+[GIN-debug] HEAD   /                         --> github.com/ollama/ollama/server.(*Server).GenerateRoutes.func1 (5 handlers)
+[GIN-debug] HEAD   /api/tags                 --> github.com/ollama/ollama/server.(*Server).ListHandler-fm (5 handlers)
+[GIN-debug] HEAD   /api/version              --> github.com/ollama/ollama/server.(*Server).GenerateRoutes.func2 (5 handlers)
+time=2025-01-17T21:04:11.415+08:00 level=INFO source=routes.go:1310 msg="Listening on [::]:11433 (version 0.5.4)"
+time=2025-01-17T21:04:11.416+08:00 level=INFO source=routes.go:1339 msg="Dynamic LLM libraries" runners="[rocm_avx cpu cpu_avx cpu_avx2 cuda_v11_avx cuda_v12_avx]"
+time=2025-01-17T21:04:11.416+08:00 level=INFO source=gpu.go:226 msg="looking for compatible GPUs"
+time=2025-01-17T21:04:11.563+08:00 level=INFO source=types.go:131 msg="inference compute" id=GPU-e1cd6cb8-7b43-0f8c-de7c-999153c768be library=cuda variant=v12 compute=8.0 driver=12.4 name="NVIDIA A800-SXM4-80GB" total="79.3 GiB" available="78.9 GiB"
+time=2025-01-17T21:07:21.929+08:00 level=INFO source=sched.go:714 msg="new model will fit in available VRAM in single GPU, loading" model=/home/zl/.ollama/models/blobs/sha256-4824460d29f2058aaf6e1118a63a7a197a09bed509f0e7d4e2efb1ee273b447d gpu=GPU-e1cd6cb8-7b43-0f8c-de7c-999153c768be parallel=16 available=84725989376 required="54.2 GiB"
+time=2025-01-17T21:07:22.456+08:00 level=INFO source=server.go:104 msg="system memory" total="1007.5 GiB" free="992.7 GiB" free_swap="294.3 MiB"
+time=2025-01-17T21:07:22.457+08:00 level=INFO source=memory.go:356 msg="offload to cuda" layers.requested=-1 layers.model=81 layers.offload=81 layers.split="" memory.available="[78.9 GiB]" memory.gpu_overhead="0 B" memory.required.full="54.2 GiB" memory.required.partial="54.2 GiB" memory.required.kv="10.0 GiB" memory.required.allocations="[54.2 GiB]" memory.weights.total="48.2 GiB" memory.weights.repeating="47.4 GiB" memory.weights.nonrepeating="822.0 MiB" memory.graph.full="4.1 GiB" memory.graph.partial="4.3 GiB"
+time=2025-01-17T21:07:22.458+08:00 level=INFO source=server.go:376 msg="starting llama server" cmd="/home/zl/ollama/lib/ollama/runners/cuda_v12_avx/ollama_llama_server runner --model /home/zl/.ollama/models/blobs/sha256-4824460d29f2058aaf6e1118a63a7a197a09bed509f0e7d4e2efb1ee273b447d --ctx-size 32768 --batch-size 512 --n-gpu-layers 81 --threads 64 --parallel 16 --port 41925"
+time=2025-01-17T21:07:22.458+08:00 level=INFO source=sched.go:449 msg="loaded runners" count=1
+time=2025-01-17T21:07:22.458+08:00 level=INFO source=server.go:555 msg="waiting for llama runner to start responding"
+time=2025-01-17T21:07:22.459+08:00 level=INFO source=server.go:589 msg="waiting for server to become available" status="llm server error"
+time=2025-01-17T21:07:22.499+08:00 level=INFO source=runner.go:945 msg="starting go runner"
+ggml_cuda_init: GGML_CUDA_FORCE_MMQ:    no
+ggml_cuda_init: GGML_CUDA_FORCE_CUBLAS: no
+ggml_cuda_init: found 1 CUDA devices:
+  Device 0: NVIDIA A800-SXM4-80GB, compute capability 8.0, VMM: yes
+time=2025-01-17T21:07:22.655+08:00 level=INFO source=runner.go:946 msg=system info="CUDA : ARCHS = 600,610,620,700,720,750,800,860,870,890,900 | USE_GRAPHS = 1 | PEER_MAX_BATCH_SIZE = 128 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | LLAMAFILE = 1 | AARCH64_REPACK = 1 | cgo(gcc)" threads=64
+time=2025-01-17T21:07:22.655+08:00 level=INFO source=.:0 msg="Server listening on 127.0.0.1:41925"
+time=2025-01-17T21:07:22.711+08:00 level=INFO source=server.go:589 msg="waiting for server to become available" status="llm server loading model"
+llama_load_model_from_file: using device CUDA0 (NVIDIA A800-SXM4-80GB) - 80801 MiB free
+llama_model_loader: loaded meta data with 36 key-value pairs and 724 tensors from /home/zl/.ollama/models/blobs/sha256-4824460d29f2058aaf6e1118a63a7a197a09bed509f0e7d4e2efb1ee273b447d (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = llama
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = Llama 3.1 70B Instruct 2024 12
+llama_model_loader: - kv   3:                            general.version str              = 2024-12
+llama_model_loader: - kv   4:                           general.finetune str              = Instruct
+llama_model_loader: - kv   5:                           general.basename str              = Llama-3.1
+llama_model_loader: - kv   6:                         general.size_label str              = 70B
+llama_model_loader: - kv   7:                            general.license str              = llama3.1
+llama_model_loader: - kv   8:                   general.base_model.count u32              = 1
+llama_model_loader: - kv   9:                  general.base_model.0.name str              = Llama 3.1 70B
+llama_model_loader: - kv  10:          general.base_model.0.organization str              = Meta Llama
+llama_model_loader: - kv  11:              general.base_model.0.repo_url str              = https://huggingface.co/meta-llama/Lla...
+llama_model_loader: - kv  12:                               general.tags arr[str,5]       = ["facebook", "meta", "pytorch", "llam...
+llama_model_loader: - kv  13:                          general.languages arr[str,7]       = ["fr", "it", "pt", "hi", "es", "th", ...
+llama_model_loader: - kv  14:                          llama.block_count u32              = 80
+llama_model_loader: - kv  15:                       llama.context_length u32              = 131072
+llama_model_loader: - kv  16:                     llama.embedding_length u32              = 8192
+llama_model_loader: - kv  17:                  llama.feed_forward_length u32              = 28672
+llama_model_loader: - kv  18:                 llama.attention.head_count u32              = 64
+llama_model_loader: - kv  19:              llama.attention.head_count_kv u32              = 8
+llama_model_loader: - kv  20:                       llama.rope.freq_base f32              = 500000.000000
+llama_model_loader: - kv  21:     llama.attention.layer_norm_rms_epsilon f32              = 0.000010
+llama_model_loader: - kv  22:                 llama.attention.key_length u32              = 128
+llama_model_loader: - kv  23:               llama.attention.value_length u32              = 128
+llama_model_loader: - kv  24:                          general.file_type u32              = 15
+llama_model_loader: - kv  25:                           llama.vocab_size u32              = 128256
+llama_model_loader: - kv  26:                 llama.rope.dimension_count u32              = 128
+llama_model_loader: - kv  27:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  28:                         tokenizer.ggml.pre str              = llama-bpe
+llama_model_loader: - kv  29:                      tokenizer.ggml.tokens arr[str,128256]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  30:                  tokenizer.ggml.token_type arr[i32,128256]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  31:                      tokenizer.ggml.merges arr[str,280147]  = ["Ġ Ġ", "Ġ ĠĠĠ", "ĠĠ ĠĠ", "...
+llama_model_loader: - kv  32:                tokenizer.ggml.bos_token_id u32              = 128000
+llama_model_loader: - kv  33:                tokenizer.ggml.eos_token_id u32              = 128009
+llama_model_loader: - kv  34:                    tokenizer.chat_template str              = {{- bos_token }}\n{%- if custom_tools ...
+llama_model_loader: - kv  35:               general.quantization_version u32              = 2
+llama_model_loader: - type  f32:  162 tensors
+llama_model_loader: - type q4_K:  441 tensors
+llama_model_loader: - type q5_K:   40 tensors
+llama_model_loader: - type q6_K:   81 tensors
+llm_load_vocab: special tokens cache size = 256
+llm_load_vocab: token to piece cache size = 0.7999 MB
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = llama
+llm_load_print_meta: vocab type       = BPE
+llm_load_print_meta: n_vocab          = 128256
+llm_load_print_meta: n_merges         = 280147
+llm_load_print_meta: vocab_only       = 0
+llm_load_print_meta: n_ctx_train      = 131072
+llm_load_print_meta: n_embd           = 8192
+llm_load_print_meta: n_layer          = 80
+llm_load_print_meta: n_head           = 64
+llm_load_print_meta: n_head_kv        = 8
+llm_load_print_meta: n_rot            = 128
+llm_load_print_meta: n_swa            = 0
+llm_load_print_meta: n_embd_head_k    = 128
+llm_load_print_meta: n_embd_head_v    = 128
+llm_load_print_meta: n_gqa            = 8
+llm_load_print_meta: n_embd_k_gqa     = 1024
+llm_load_print_meta: n_embd_v_gqa     = 1024
+llm_load_print_meta: f_norm_eps       = 0.0e+00
+llm_load_print_meta: f_norm_rms_eps   = 1.0e-05
+llm_load_print_meta: f_clamp_kqv      = 0.0e+00
+llm_load_print_meta: f_max_alibi_bias = 0.0e+00
+llm_load_print_meta: f_logit_scale    = 0.0e+00
+llm_load_print_meta: n_ff             = 28672
+llm_load_print_meta: n_expert         = 0
+llm_load_print_meta: n_expert_used    = 0
+llm_load_print_meta: causal attn      = 1
+llm_load_print_meta: pooling type     = 0
+llm_load_print_meta: rope type        = 0
+llm_load_print_meta: rope scaling     = linear
+llm_load_print_meta: freq_base_train  = 500000.0
+llm_load_print_meta: freq_scale_train = 1
+llm_load_print_meta: n_ctx_orig_yarn  = 131072
+llm_load_print_meta: rope_finetuned   = unknown
+llm_load_print_meta: ssm_d_conv       = 0
+llm_load_print_meta: ssm_d_inner      = 0
+llm_load_print_meta: ssm_d_state      = 0
+llm_load_print_meta: ssm_dt_rank      = 0
+llm_load_print_meta: ssm_dt_b_c_rms   = 0
+llm_load_print_meta: model type       = 70B
+llm_load_print_meta: model ftype      = Q4_K - Medium
+llm_load_print_meta: model params     = 70.55 B
+llm_load_print_meta: model size       = 39.59 GiB (4.82 BPW) 
+llm_load_print_meta: general.name     = Llama 3.1 70B Instruct 2024 12
+llm_load_print_meta: BOS token        = 128000 '<|begin_of_text|>'
+llm_load_print_meta: EOS token        = 128009 '<|eot_id|>'
+llm_load_print_meta: EOT token        = 128009 '<|eot_id|>'
+llm_load_print_meta: EOM token        = 128008 '<|eom_id|>'
+llm_load_print_meta: LF token         = 128 'Ä'
+llm_load_print_meta: EOG token        = 128008 '<|eom_id|>'
+llm_load_print_meta: EOG token        = 128009 '<|eot_id|>'
+llm_load_print_meta: max token length = 256
+llm_load_tensors: offloading 80 repeating layers to GPU
+llm_load_tensors: offloading output layer to GPU
+llm_load_tensors: offloaded 81/81 layers to GPU
+llm_load_tensors:        CUDA0 model buffer size = 39979.48 MiB
+llm_load_tensors:   CPU_Mapped model buffer size =   563.62 MiB
+llama_new_context_with_model: n_seq_max     = 16
+llama_new_context_with_model: n_ctx         = 32768
+llama_new_context_with_model: n_ctx_per_seq = 2048
+llama_new_context_with_model: n_batch       = 8192
+llama_new_context_with_model: n_ubatch      = 512
+llama_new_context_with_model: flash_attn    = 0
+llama_new_context_with_model: freq_base     = 500000.0
+llama_new_context_with_model: freq_scale    = 1
+llama_new_context_with_model: n_ctx_per_seq (2048) < n_ctx_train (131072) -- the full capacity of the model will not be utilized
+llama_kv_cache_init:      CUDA0 KV buffer size = 10240.00 MiB
+llama_new_context_with_model: KV self size  = 10240.00 MiB, K (f16): 5120.00 MiB, V (f16): 5120.00 MiB
+llama_new_context_with_model:  CUDA_Host  output buffer size =     8.33 MiB
+llama_new_context_with_model:      CUDA0 compute buffer size =  4224.00 MiB
+llama_new_context_with_model:  CUDA_Host compute buffer size =    80.01 MiB
+llama_new_context_with_model: graph nodes  = 2566
+llama_new_context_with_model: graph splits = 2
+time=2025-01-17T21:07:33.005+08:00 level=INFO source=server.go:594 msg="llama runner started in 10.55 seconds"
+llama_model_loader: loaded meta data with 36 key-value pairs and 724 tensors from /home/zl/.ollama/models/blobs/sha256-4824460d29f2058aaf6e1118a63a7a197a09bed509f0e7d4e2efb1ee273b447d (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = llama
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = Llama 3.1 70B Instruct 2024 12
+llama_model_loader: - kv   3:                            general.version str              = 2024-12
+llama_model_loader: - kv   4:                           general.finetune str              = Instruct
+llama_model_loader: - kv   5:                           general.basename str              = Llama-3.1
+llama_model_loader: - kv   6:                         general.size_label str              = 70B
+llama_model_loader: - kv   7:                            general.license str              = llama3.1
+llama_model_loader: - kv   8:                   general.base_model.count u32              = 1
+llama_model_loader: - kv   9:                  general.base_model.0.name str              = Llama 3.1 70B
+llama_model_loader: - kv  10:          general.base_model.0.organization str              = Meta Llama
+llama_model_loader: - kv  11:              general.base_model.0.repo_url str              = https://huggingface.co/meta-llama/Lla...
+llama_model_loader: - kv  12:                               general.tags arr[str,5]       = ["facebook", "meta", "pytorch", "llam...
+llama_model_loader: - kv  13:                          general.languages arr[str,7]       = ["fr", "it", "pt", "hi", "es", "th", ...
+llama_model_loader: - kv  14:                          llama.block_count u32              = 80
+llama_model_loader: - kv  15:                       llama.context_length u32              = 131072
+llama_model_loader: - kv  16:                     llama.embedding_length u32              = 8192
+llama_model_loader: - kv  17:                  llama.feed_forward_length u32              = 28672
+llama_model_loader: - kv  18:                 llama.attention.head_count u32              = 64
+llama_model_loader: - kv  19:              llama.attention.head_count_kv u32              = 8
+llama_model_loader: - kv  20:                       llama.rope.freq_base f32              = 500000.000000
+llama_model_loader: - kv  21:     llama.attention.layer_norm_rms_epsilon f32              = 0.000010
+llama_model_loader: - kv  22:                 llama.attention.key_length u32              = 128
+llama_model_loader: - kv  23:               llama.attention.value_length u32              = 128
+llama_model_loader: - kv  24:                          general.file_type u32              = 15
+llama_model_loader: - kv  25:                           llama.vocab_size u32              = 128256
+llama_model_loader: - kv  26:                 llama.rope.dimension_count u32              = 128
+llama_model_loader: - kv  27:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  28:                         tokenizer.ggml.pre str              = llama-bpe
+llama_model_loader: - kv  29:                      tokenizer.ggml.tokens arr[str,128256]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  30:                  tokenizer.ggml.token_type arr[i32,128256]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  31:                      tokenizer.ggml.merges arr[str,280147]  = ["Ġ Ġ", "Ġ ĠĠĠ", "ĠĠ ĠĠ", "...
+llama_model_loader: - kv  32:                tokenizer.ggml.bos_token_id u32              = 128000
+llama_model_loader: - kv  33:                tokenizer.ggml.eos_token_id u32              = 128009
+llama_model_loader: - kv  34:                    tokenizer.chat_template str              = {{- bos_token }}\n{%- if custom_tools ...
+llama_model_loader: - kv  35:               general.quantization_version u32              = 2
+llama_model_loader: - type  f32:  162 tensors
+llama_model_loader: - type q4_K:  441 tensors
+llama_model_loader: - type q5_K:   40 tensors
+llama_model_loader: - type q6_K:   81 tensors
+llm_load_vocab: special tokens cache size = 256
+llm_load_vocab: token to piece cache size = 0.7999 MB
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = llama
+llm_load_print_meta: vocab type       = BPE
+llm_load_print_meta: n_vocab          = 128256
+llm_load_print_meta: n_merges         = 280147
+llm_load_print_meta: vocab_only       = 1
+llm_load_print_meta: model type       = ?B
+llm_load_print_meta: model ftype      = all F32
+llm_load_print_meta: model params     = 70.55 B
+llm_load_print_meta: model size       = 39.59 GiB (4.82 BPW) 
+llm_load_print_meta: general.name     = Llama 3.1 70B Instruct 2024 12
+llm_load_print_meta: BOS token        = 128000 '<|begin_of_text|>'
+llm_load_print_meta: EOS token        = 128009 '<|eot_id|>'
+llm_load_print_meta: EOT token        = 128009 '<|eot_id|>'
+llm_load_print_meta: EOM token        = 128008 '<|eom_id|>'
+llm_load_print_meta: LF token         = 128 'Ä'
+llm_load_print_meta: EOG token        = 128008 '<|eom_id|>'
+llm_load_print_meta: EOG token        = 128009 '<|eot_id|>'
+llm_load_print_meta: max token length = 256
+llama_model_load: vocab only - skipping tensors
+[GIN] 2025/01/17 - 21:07:39 | 200 | 18.366449725s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:07:43 | 200 |  3.446837325s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:07:46 | 200 |  2.869796967s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:07:50 | 200 |  4.926392489s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:07:55 | 200 |  4.410773253s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:07:55.511+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2671 keep=5 new=2048
+[GIN] 2025/01/17 - 21:08:01 | 200 |  5.906039054s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:08:04 | 200 |  2.641415821s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:08:07 | 200 |  3.082638203s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:08:12 | 200 |  5.280583318s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:08:15 | 200 |  2.944658187s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:08:15.534+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2279 keep=5 new=2048
+[GIN] 2025/01/17 - 21:08:21 | 200 |  5.916866796s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:08:25 | 200 |  3.604099578s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:08:29 | 200 |  4.258543217s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:08:32 | 200 |  2.816395572s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:08:34 | 200 |  2.624533397s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:08:40 | 200 |  5.833266153s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:08:40.782+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2623 keep=5 new=2048
+[GIN] 2025/01/17 - 21:08:47 | 200 |  6.834681829s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:08:53 | 200 |  6.223099678s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:08:59 | 200 |  5.332973364s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:09:05 | 200 |    6.0891159s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:09:05.405+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2231 keep=5 new=2048
+[GIN] 2025/01/17 - 21:09:11 | 200 |  6.381095524s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:09:11.818+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2581 keep=5 new=2048
+[GIN] 2025/01/17 - 21:09:17 | 200 |  6.116377161s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:09:21 | 200 |  3.983114812s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:09:27 | 200 |  5.117112161s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:09:31 | 200 |  4.719128005s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:09:36 | 200 |  5.111495385s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:09:43 | 200 |  6.725569673s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:09:46 | 200 |  2.507817334s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:09:46.353+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2560 keep=5 new=2048
+[GIN] 2025/01/17 - 21:09:53 | 200 |  7.011056917s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:09:57 | 200 |   4.55826508s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:10:01 | 200 |  3.172755717s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:10:01.231+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2401 keep=5 new=2048
+[GIN] 2025/01/17 - 21:10:07 | 200 |  6.474141725s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:10:07.766+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2410 keep=5 new=2048
+[GIN] 2025/01/17 - 21:10:14 | 200 |  6.281828186s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:10:14.089+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2672 keep=5 new=2048
+[GIN] 2025/01/17 - 21:10:19 | 200 |   5.80877312s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:10:24 | 200 |  4.514249643s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:10:32 | 200 |  8.551053434s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:10:33.063+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2385 keep=5 new=2048
+[GIN] 2025/01/17 - 21:10:40 | 200 |  7.108942717s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:10:43 | 200 |  3.276685647s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:10:47 | 200 |  3.781395663s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:10:51 | 200 |  4.388032182s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:10:57 | 200 |  6.032663349s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:10:57.835+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2651 keep=5 new=2048
+[GIN] 2025/01/17 - 21:11:03 | 200 |  5.922942105s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:11:06 | 200 |  2.419364129s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:11:12 | 200 |  6.295069214s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:11:17 | 200 |  5.194068333s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:11:23 | 200 |  6.048103919s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:11:28 | 200 |  4.767040012s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:11:34 | 200 |  6.052902824s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:11:39 | 200 |  4.320578788s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:11:44 | 200 |  5.671739313s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:11:50 | 200 |  5.256919255s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:11:57 | 200 |  6.954671617s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:12:02 | 200 |  5.251133227s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:12:06 | 200 |  3.719490574s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:12:09 | 200 |   2.93458122s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:12:12 | 200 |  3.099612862s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:12:18 | 200 |  6.344728257s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:12:23 | 200 |   5.18878886s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:12:23.842+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2247 keep=5 new=2048
+[GIN] 2025/01/17 - 21:12:30 | 200 |  6.940427621s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:12:35 | 200 |  4.555046171s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:12:41 | 200 |  6.163571046s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:12:41.573+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2057 keep=5 new=2048
+[GIN] 2025/01/17 - 21:13:16 | 200 | 34.997985081s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:13:16.624+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3068 keep=5 new=2048
+[GIN] 2025/01/17 - 21:13:22 | 200 |  6.105626189s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:13:28 | 200 |  5.474228067s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:13:32 | 200 |  4.541091501s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:13:35 | 200 |  2.651268762s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:13:39 | 200 |  3.967041684s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:13:39.522+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2102 keep=5 new=2048
+[GIN] 2025/01/17 - 21:13:46 | 200 |  6.543595927s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:13:49 | 200 |  3.558930135s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:13:49.695+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2632 keep=5 new=2048
+[GIN] 2025/01/17 - 21:13:55 | 200 |  6.033738085s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:14:00 | 200 |  4.997681486s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:14:04 | 200 |  3.676903527s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:14:10 | 200 |  5.799790765s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:14:10.333+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2447 keep=5 new=2048
+[GIN] 2025/01/17 - 21:14:15 | 200 |  5.624127565s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:14:19 | 200 |  3.657806841s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:14:27 | 200 |  7.766880696s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:14:32 | 200 |  5.278945919s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:14:38 | 200 |  5.591671729s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:14:44 | 200 |  6.297074766s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:15:13 | 200 | 29.073460928s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:15:13.870+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2609 keep=5 new=2048
+[GIN] 2025/01/17 - 21:15:20 | 200 |  6.798963281s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:15:23 | 200 |  3.279071566s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:15:24.023+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2648 keep=5 new=2048
+[GIN] 2025/01/17 - 21:15:29 | 200 |  6.004467795s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:15:33 | 200 |  3.259795618s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:15:36 | 200 |  3.466619619s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:15:40 | 200 |  3.738711307s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:15:40.654+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2378 keep=5 new=2048
+[GIN] 2025/01/17 - 21:15:47 | 200 |  6.442396836s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:15:47.112+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2843 keep=5 new=2048
+[GIN] 2025/01/17 - 21:15:53 | 200 |  6.042495653s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:15:57 | 200 |  4.138092294s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:16:03 | 200 |  5.843610946s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:16:10 | 200 |  6.849181204s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:16:17 | 200 |  7.103558345s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:16:17.272+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2789 keep=5 new=2048
+[GIN] 2025/01/17 - 21:16:22 | 200 |  5.671504434s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:16:28 | 200 |  5.910530505s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:16:31 | 200 |   2.75688068s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:16:37 | 200 |  5.924103399s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:16:50 | 200 |  12.83310513s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:16:50.524+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2394 keep=5 new=2048
+[GIN] 2025/01/17 - 21:16:56 | 200 |  6.282603149s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:17:02 | 200 |  5.876769847s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:17:05 | 200 |  3.282906052s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:17:09 | 200 |  3.726866762s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:17:16 | 200 |   6.27619682s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:17:22 | 200 |   5.96591002s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:17:28 | 200 |  6.451546311s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:17:34 | 200 |  5.444635486s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:17:34.095+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2345 keep=5 new=2048
+[GIN] 2025/01/17 - 21:17:40 | 200 |  6.186335669s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:17:45 | 200 |  5.046472389s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:17:47 | 200 |  2.520323783s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:17:47.956+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3280 keep=5 new=2048
+[GIN] 2025/01/17 - 21:17:53 | 200 |  5.716408791s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:17:53.682+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2606 keep=5 new=2048
+[GIN] 2025/01/17 - 21:17:59 | 200 |  6.052915478s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:18:02 | 200 |   3.25720392s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:18:10 | 200 |  7.365838646s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:18:15 | 200 |  4.944155418s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:18:18 | 200 |  3.410462874s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:18:22 | 200 |  3.797641532s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:18:22.709+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3057 keep=5 new=2048
+[GIN] 2025/01/17 - 21:18:28 | 200 |  5.860655798s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:18:28.627+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2955 keep=5 new=2048
+[GIN] 2025/01/17 - 21:18:34 | 200 |  6.164302051s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:18:39 | 200 |  4.322156355s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:18:44 | 200 |  5.613110699s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:18:50 | 200 |  5.539785847s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:18:55 | 200 |  5.265852709s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:18:55.709+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=4131 keep=5 new=2048
+[GIN] 2025/01/17 - 21:19:01 | 200 |  6.132053839s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:19:01.852+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3489 keep=5 new=2048
+[GIN] 2025/01/17 - 21:19:07 | 200 |  6.107432592s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:19:07.993+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3232 keep=5 new=2048
+[GIN] 2025/01/17 - 21:19:14 | 200 |  6.313452887s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:19:20 | 200 |  6.078163934s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:19:20.467+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2301 keep=5 new=2048
+[GIN] 2025/01/17 - 21:19:26 | 200 |  6.174584709s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:19:29 | 200 |  2.875330255s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:19:35 | 200 |  5.958587943s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:19:41 | 200 |  5.628694861s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:19:41.229+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2467 keep=5 new=2048
+[GIN] 2025/01/17 - 21:19:47 | 200 |  6.217510014s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:19:54 | 200 |  7.025441662s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:20:01 | 200 |   6.81954468s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:20:08 | 200 |  7.617292162s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:20:12 | 200 |  3.501659265s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:20:16 | 200 |  4.148138708s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:20:23 | 200 |  6.400521017s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:20:29 | 200 |  6.402669084s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:20:34 | 200 |  5.353337954s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:20:39 | 200 |   4.38432043s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:20:42 | 200 |  2.995335419s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:20:46 | 200 |   3.72242965s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:20:49 | 200 |  3.696902369s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:20:53 | 200 |    3.6780095s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:20:57 | 200 |  3.680473697s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:21:01 | 200 |  4.046805604s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:21:06 | 200 |  4.944959671s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:21:11 | 200 |  4.785331147s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:21:17 | 200 |   6.32209975s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:21:24 | 200 |  7.155216007s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:21:29 | 200 |  5.081405162s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:21:33 | 200 |  3.609127395s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:21:36 | 200 |  3.362200754s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:21:42 | 200 |  5.278361243s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:21:45 | 200 |  3.390470447s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:21:50 | 200 |  5.266872936s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:21:55 | 200 |  4.790781765s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:22:00 | 200 |  4.241542237s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:22:06 | 200 |  5.900684264s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:22:06.171+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2484 keep=5 new=2048
+[GIN] 2025/01/17 - 21:22:12 | 200 |  6.507999779s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:22:12.694+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2253 keep=5 new=2048
+[GIN] 2025/01/17 - 21:22:19 | 200 |  6.643554715s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:22:24 | 200 |  5.529275669s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:22:29 | 200 |  4.200760726s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:22:34 | 200 |  5.275969382s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:22:34.512+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2255 keep=5 new=2048
+[GIN] 2025/01/17 - 21:22:41 | 200 |  7.005390252s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:22:41.558+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2061 keep=5 new=2048
+[GIN] 2025/01/17 - 21:22:47 | 200 |  6.464057841s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:22:51 | 200 |    3.2252898s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:22:53 | 200 |  2.397959426s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:22:59 | 200 |  5.492751035s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:23:01 | 200 |  2.567169198s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:23:06 | 200 |  4.761161535s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:23:09 | 200 |  3.127429348s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:23:15 | 200 |  6.030878338s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:23:18 | 200 |  2.963426071s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:23:18.876+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2223 keep=5 new=2048
+[GIN] 2025/01/17 - 21:23:25 | 200 |  6.521161267s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:23:30 | 200 |  5.611420098s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:23:35 | 200 |  4.339899169s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:23:38 | 200 |  3.288840409s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:23:42 | 200 |  3.398027902s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:23:46 | 200 |  4.534150987s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:23:46.774+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3035 keep=5 new=2048
+[GIN] 2025/01/17 - 21:23:52 | 200 |   6.27612956s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:23:59 | 200 |  6.164199906s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:24:05 | 200 |  6.487098702s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:24:10 | 200 |  4.415805688s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:24:10.261+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2491 keep=5 new=2048
+[GIN] 2025/01/17 - 21:24:16 | 200 |  6.111124171s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:24:16.394+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2073 keep=5 new=2048
+[GIN] 2025/01/17 - 21:24:22 | 200 |  5.775383228s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:24:22.192+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2953 keep=5 new=2048
+[GIN] 2025/01/17 - 21:24:28 | 200 |  6.315613946s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:24:33 | 200 |  4.984437633s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:24:33.572+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2959 keep=5 new=2048
+[GIN] 2025/01/17 - 21:24:40 | 200 |  6.631330199s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:24:44 | 200 |  3.972423291s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:24:47 | 200 |  3.042073824s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:24:51 | 200 |  4.452220296s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:24:51.824+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2535 keep=5 new=2048
+[GIN] 2025/01/17 - 21:24:57 | 200 |  6.103015708s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:25:02 | 200 |   4.58014398s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:25:06 | 200 |     3.542568s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:25:12 | 200 |  5.988414173s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:25:17 | 200 |  5.237830839s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:25:22 | 200 |  5.330860129s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:25:27 | 200 |  4.920799665s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:25:33 | 200 |  5.549048514s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:25:36 | 200 |  2.870110306s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:25:39 | 200 |  3.569189924s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:25:44 | 200 |  5.242323653s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:25:48 | 200 |  3.336867863s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:25:52 | 200 |   3.82393281s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:25:57 | 200 |  5.245219487s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:26:02 | 200 |  4.633637668s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:26:08 | 200 |   6.53537799s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:26:08.830+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2928 keep=5 new=2048
+[GIN] 2025/01/17 - 21:26:14 | 200 |  5.756348143s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:26:18 | 200 |  3.841554002s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:26:23 | 200 |  5.267332603s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:27:05 | 200 | 41.454425502s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:27:05.285+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2490 keep=5 new=2048
+[GIN] 2025/01/17 - 21:27:11 | 200 |  6.302285091s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:27:14 | 200 |  3.004972797s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:27:18 | 200 |  3.406725685s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:27:22 | 200 |  4.726660557s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:27:28 | 200 |  5.305159503s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:27:33 | 200 |  5.311723848s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:27:37 | 200 |  4.188922252s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:27:37.758+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2318 keep=5 new=2048
+[GIN] 2025/01/17 - 21:27:44 | 200 |  6.387421325s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:27:44.185+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2888 keep=5 new=2048
+[GIN] 2025/01/17 - 21:27:50 | 200 |  6.762065722s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:27:57 | 200 |  6.213348576s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:28:00 | 200 |  3.189115296s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:28:03 | 200 |  3.355977484s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:28:08 | 200 |  4.722970397s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:28:12 | 200 |  4.022884106s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:28:18 | 200 |  5.567862204s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:28:22 | 200 |  4.133547027s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:28:26 | 200 |  4.228377525s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:28:31 | 200 |  4.998567613s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:28:34 | 200 |  3.038573456s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:28:39 | 200 |  4.817780276s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:28:45 | 200 |  5.800010839s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:28:49 | 200 |  3.611395219s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:28:55 | 200 |  6.181459359s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:28:58 | 200 |   3.50411365s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:29:03 | 200 |  4.792966384s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:29:07 | 200 |  3.989703227s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:29:12 | 200 |  4.905234867s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:29:18 | 200 |  5.829397849s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:29:22 | 200 |  3.849258047s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:29:22.455+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2085 keep=5 new=2048
+[GIN] 2025/01/17 - 21:29:28 | 200 |  6.588557985s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:29:29.090+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3846 keep=5 new=2048
+[GIN] 2025/01/17 - 21:29:34 | 200 |  5.749363637s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:29:45 | 200 |  4.263848323s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:29:51 | 200 |  5.622041208s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:29:58 | 200 |  7.182327459s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:30:02 | 200 |  4.088146172s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:30:05 | 200 |  2.921584316s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:30:12 | 200 |  6.795220042s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:30:17 | 200 |  5.394428954s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:30:23 | 200 |  5.205694133s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:30:29 | 200 |  6.180003983s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:30:33 | 200 |  3.705406152s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:30:36 | 200 |  2.954733436s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:30:36.233+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2670 keep=5 new=2048
+[GIN] 2025/01/17 - 21:30:41 | 200 |  5.686267713s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:30:46 | 200 |  4.549011459s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:30:51 | 200 |  5.235403483s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:30:56 | 200 |  4.321197524s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:30:59 | 200 |  3.079179039s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:31:03 | 200 |   4.09876425s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:31:09 | 200 |  5.799260012s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:31:14 | 200 |  5.022090681s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:31:14.320+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2924 keep=5 new=2048
+[GIN] 2025/01/17 - 21:31:21 | 200 |  7.075536231s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:31:21.431+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2331 keep=5 new=2048
+[GIN] 2025/01/17 - 21:31:27 | 200 |  6.304853186s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:31:27.761+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2665 keep=5 new=2048
+[GIN] 2025/01/17 - 21:31:33 | 200 |  5.919018047s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:31:38 | 200 |  4.610077802s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:31:57 | 200 | 19.305222001s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:32:03 | 200 |  5.442259909s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:32:06 | 200 |  3.569695544s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:32:11 | 200 |    4.3452404s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:32:13 | 200 |  2.069472429s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:32:16 | 200 |  3.145824619s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:32:16.525+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2607 keep=5 new=2048
+[GIN] 2025/01/17 - 21:32:22 | 200 |  6.204380964s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:32:25 | 200 |  3.068302507s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:32:30 | 200 |    4.2214647s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:32:30.134+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2907 keep=5 new=2048
+[GIN] 2025/01/17 - 21:32:36 | 200 |  6.082878043s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:32:41 | 200 |  5.440423964s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:32:47 | 200 |  5.567170368s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:32:47.316+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2697 keep=5 new=2048
+[GIN] 2025/01/17 - 21:32:53 | 200 |  6.239244163s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:32:58 | 200 |  4.875499405s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:33:00 | 200 |  2.379357773s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:33:03 | 200 |  2.185414565s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:33:08 | 200 |  5.018618202s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:33:09 | 200 |  1.760193408s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:33:12 | 200 |  2.773360197s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:33:12.799+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2428 keep=5 new=2048
+[GIN] 2025/01/17 - 21:33:19 | 200 |  6.663173969s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:33:25 | 200 |  6.396925634s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:33:29 | 200 |  3.646862038s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:33:33 | 200 |   3.75947404s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:33:37 | 200 |  4.534709206s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:33:44 | 200 |  6.905355164s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:33:48 | 200 |  3.496521341s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:33:53 | 200 |  5.361877854s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:33:59 | 200 |  5.522861182s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:34:01 | 200 |  2.588131261s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:34:05 | 200 |  3.975622306s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:34:12 | 200 |  6.040800324s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:34:12.123+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2784 keep=5 new=2048
+[GIN] 2025/01/17 - 21:34:18 | 200 |  6.137038749s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:34:18.282+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2386 keep=5 new=2048
+[GIN] 2025/01/17 - 21:34:24 | 200 |  5.806590454s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:34:27 | 200 |   3.37513393s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:34:33 | 200 |  6.036388544s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:34:40 | 200 |  7.322697577s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:34:46 | 200 |  6.045917331s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:34:49 | 200 |  2.976702959s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:34:56 | 200 |  6.454186398s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:34:59 | 200 |  3.178618878s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:34:59.767+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2258 keep=5 new=2048
+[GIN] 2025/01/17 - 21:35:05 | 200 |  5.654901121s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:35:05.457+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2063 keep=5 new=2048
+[GIN] 2025/01/17 - 21:35:11 | 200 |  6.249177142s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:35:16 | 200 |  5.016826822s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:35:21 | 200 |  4.310982859s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:35:23 | 200 |  2.607757469s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:35:23.787+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2580 keep=5 new=2048
+[GIN] 2025/01/17 - 21:35:30 | 200 |  6.401796858s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:35:35 | 200 |  5.745888563s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:35:39 | 200 |  3.709256738s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:35:43 | 200 |  4.201578853s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:35:47 | 200 |  3.730906384s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:35:47.751+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2751 keep=5 new=2048
+[GIN] 2025/01/17 - 21:35:53 | 200 |   6.28987914s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:35:57 | 200 |  3.416398159s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:36:04 | 200 |  7.314639591s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:36:08 | 200 |  3.280611459s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:36:11 | 200 |  3.215377185s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:36:18 | 200 |  7.092175075s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:36:22 | 200 |  3.834720149s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:36:26 | 200 |  4.408372409s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:36:26.888+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2255 keep=5 new=2048
+[GIN] 2025/01/17 - 21:36:33 | 200 |  6.526600586s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:36:38 | 200 |  5.314936926s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:36:38.797+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2215 keep=5 new=2048
+[GIN] 2025/01/17 - 21:36:44 | 200 |  5.362735944s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:36:44.201+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2780 keep=5 new=2048
+[GIN] 2025/01/17 - 21:36:50 | 200 |  5.898116296s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:36:56 | 200 |  6.092589004s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:37:01 | 200 |  5.153889389s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:37:01.434+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2606 keep=5 new=2048
+[GIN] 2025/01/17 - 21:37:08 | 200 |  6.765697741s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:37:12 | 200 |   3.95488029s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:37:12.234+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2940 keep=5 new=2048
+[GIN] 2025/01/17 - 21:37:56 | 200 | 43.929845965s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:38:02 | 200 |  6.117118027s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:38:07 | 200 |  5.438703874s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:38:07.830+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2060 keep=5 new=2048
+[GIN] 2025/01/17 - 21:38:13 | 200 |  6.160422478s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:38:14.035+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2271 keep=5 new=2048
+[GIN] 2025/01/17 - 21:38:19 | 200 |  5.970424925s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:38:23 | 200 |  3.364256801s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:38:25 | 200 |  2.458730139s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:38:30 | 200 |  4.690765993s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:38:36 | 200 |  5.428179562s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:38:41 | 200 |  5.759210505s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:38:48 | 200 |  6.430698725s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:38:53 | 200 |  5.161721732s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:38:53.581+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2504 keep=5 new=2048
+[GIN] 2025/01/17 - 21:39:00 | 200 |  6.534755465s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:39:04 | 200 |  4.907027984s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:39:09 | 200 |  4.243336559s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:39:14 | 200 |  5.188452571s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:39:18 | 200 |  4.021264787s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:39:18.638+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2186 keep=5 new=2048
+[GIN] 2025/01/17 - 21:39:24 | 200 |  5.979227932s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:39:28 | 200 |  4.025015928s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:39:34 | 200 |  5.406265087s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:39:41 | 200 |  7.014125448s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:39:45 | 200 |   4.51486952s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:39:45.740+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2167 keep=5 new=2048
+[GIN] 2025/01/17 - 21:39:51 | 200 |  6.002410409s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:39:56 | 200 |  5.262614349s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:39:57.083+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2555 keep=5 new=2048
+[GIN] 2025/01/17 - 21:40:03 | 200 |  6.825608052s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:40:07 | 200 |   3.40602272s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:40:13 | 200 |  6.311957356s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:40:13.727+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2970 keep=5 new=2048
+[GIN] 2025/01/17 - 21:40:19 | 200 |  5.674414974s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:40:19.442+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2712 keep=5 new=2048
+[GIN] 2025/01/17 - 21:40:25 | 200 |  5.712912958s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:40:25.183+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2231 keep=5 new=2048
+[GIN] 2025/01/17 - 21:40:30 | 200 |  5.734226199s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:40:34 | 200 |  3.405811437s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:40:34.408+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2872 keep=5 new=2048
+[GIN] 2025/01/17 - 21:40:39 | 200 |  5.555485931s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:40:39.982+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2249 keep=5 new=2048
+[GIN] 2025/01/17 - 21:40:46 | 200 |  6.088059435s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:40:46.107+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3300 keep=5 new=2048
+[GIN] 2025/01/17 - 21:40:52 | 200 |  6.021466071s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:40:56 | 200 |  4.681420125s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:40:56.868+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2304 keep=5 new=2048
+[GIN] 2025/01/17 - 21:41:03 | 200 |  6.487364327s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:41:03.399+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2638 keep=5 new=2048
+[GIN] 2025/01/17 - 21:41:09 | 200 |  5.765665506s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:41:09.212+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3548 keep=5 new=2048
+[GIN] 2025/01/17 - 21:41:16 | 200 |  6.949489437s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:41:16.167+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3894 keep=5 new=2048
+[GIN] 2025/01/17 - 21:41:21 | 200 |  5.671557964s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:41:25 | 200 |  3.498537372s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:41:31 | 200 |  5.727195445s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:41:34 | 200 |  3.397846143s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:41:36 | 200 |  2.380592017s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:41:41 | 200 |  4.547649005s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:41:48 | 200 |  6.628359934s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:41:53 | 200 |  5.427624464s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:41:53.718+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2496 keep=5 new=2048
+[GIN] 2025/01/17 - 21:41:59 | 200 |  5.786478965s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:42:03 | 200 |  3.553507106s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:42:07 | 200 |  4.184087198s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:42:07.362+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2219 keep=5 new=2048
+[GIN] 2025/01/17 - 21:42:13 | 200 |  6.295051143s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:42:16 | 200 |  3.234622509s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:42:16.963+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2290 keep=5 new=2048
+[GIN] 2025/01/17 - 21:42:22 | 200 |  5.801294871s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:42:27 | 200 |    4.6714634s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:42:34 | 200 |  7.248500833s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:42:39 | 200 |  4.865956312s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:42:44 | 200 |  4.966582199s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:42:47 | 200 |  2.814320594s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:42:51 | 200 |  4.490056355s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:42:57 | 200 |  5.441468192s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:43:02 | 200 |   5.11505903s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:43:07 | 200 |  4.827752172s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:43:12 | 200 |  4.572065589s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:43:16 | 200 |  4.697454397s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:43:27 | 200 | 10.236078622s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:43:31 | 200 |  4.568666948s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:43:35 | 200 |  3.875933198s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:43:39 | 200 |  3.617080309s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:43:43 | 200 |  4.580038773s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:43:47 | 200 |  3.277187396s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:43:52 | 200 |  5.009664865s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:43:56 | 200 |  4.355499515s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:44:00 | 200 |  4.247278686s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:44:04 | 200 |  3.043294328s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:44:08 | 200 |  4.896168022s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:44:15 | 200 |  6.609719828s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:44:20 | 200 |   4.86805707s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:44:25 | 200 |  5.269384392s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:44:29 | 200 |  3.951655708s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:44:34 | 200 |  4.301595342s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:44:38 | 200 |  4.226933242s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:44:43 | 200 |  5.246172359s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:44:50 | 200 |  6.602850696s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:44:55 | 200 |  5.354395503s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:44:58 | 200 |  3.282704771s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:45:03 | 200 |  4.829000642s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:45:06 | 200 |  2.715042488s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:45:10 | 200 |  3.376735833s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:45:10.120+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2712 keep=5 new=2048
+[GIN] 2025/01/17 - 21:45:16 | 200 |  6.211364331s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:45:19 | 200 |  3.171007315s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:45:19.573+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2937 keep=5 new=2048
+[GIN] 2025/01/17 - 21:45:25 | 200 |  5.735421556s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:45:29 | 200 |  4.401252792s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:45:44 | 200 | 14.740267233s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:45:50 | 200 |  6.261355064s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:45:50.872+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2362 keep=5 new=2048
+[GIN] 2025/01/17 - 21:45:56 | 200 |  5.997094251s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:46:02 | 200 |  5.758611405s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:46:07 | 200 |  4.538238961s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:46:07.249+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2472 keep=5 new=2048
+[GIN] 2025/01/17 - 21:46:13 | 200 |  6.661918973s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:46:18 | 200 |  4.318207444s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:46:28 | 200 |  9.820697657s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:46:33 | 200 |  4.898698219s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:46:38 | 200 |  4.990715903s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:46:38.128+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2977 keep=5 new=2048
+[GIN] 2025/01/17 - 21:46:44 | 200 |  6.286270654s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:46:49 | 200 |  4.803233152s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:46:55 | 200 |   5.78956821s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:46:58 | 200 |  3.366603316s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:47:03 | 200 |  5.184370902s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:47:09 | 200 |  5.573725483s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:47:15 | 200 |  6.172641876s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:47:20 | 200 |  4.950318666s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:47:20.588+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2058 keep=5 new=2048
+[GIN] 2025/01/17 - 21:47:26 | 200 |  5.997625411s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:47:33 | 200 |  6.736284794s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:47:35 | 200 |  2.453821473s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:47:40 | 200 |   4.94881316s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:47:45 | 200 |   4.92106614s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:47:45.794+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2946 keep=5 new=2048
+[GIN] 2025/01/17 - 21:47:51 | 200 |  5.925082286s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:47:57 | 200 |  6.033401064s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:48:03 | 200 |  5.924985309s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:48:07 | 200 |  3.969415646s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:48:14 | 200 |  6.991652979s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:48:19 | 200 |   4.97483717s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:48:25 | 200 |   5.46013438s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:48:32 | 200 |  7.647962106s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:48:38 | 200 |  5.149016452s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:48:41 | 200 |  3.636315386s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:48:47 | 200 |  5.822113584s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:48:51 | 200 |  4.086624004s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:48:56 | 200 |  4.502099698s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:49:02 | 200 |      5.87634s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:49:02.310+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2288 keep=5 new=2048
+[GIN] 2025/01/17 - 21:49:08 | 200 |  5.790859991s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:49:12 | 200 |  4.296445248s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:49:17 | 200 |   5.08494988s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:49:22 | 200 |  5.215028747s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:49:22.821+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2163 keep=5 new=2048
+[GIN] 2025/01/17 - 21:49:28 | 200 |  5.731481221s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:49:35 | 200 |   7.02140524s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:49:40 | 200 |  5.069651662s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:49:44 | 200 |  3.796599142s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:49:49 | 200 |  5.470534237s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:49:54 | 200 |  4.614479424s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:49:58 | 200 |  3.398438256s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:50:01 | 200 |  3.897423235s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:50:05 | 200 |   3.34848273s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:50:09 | 200 |  3.694002366s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:50:13 | 200 |  4.500142113s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:50:19 | 200 |  6.006117177s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:50:25 | 200 |  5.923972262s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:50:29 | 200 |   3.75580839s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:50:33 | 200 |  3.861068428s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:50:38 | 200 |  5.111327168s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:50:42 | 200 |  4.417346168s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:50:47 | 200 |  4.359550464s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:50:47.347+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2917 keep=5 new=2048
+[GIN] 2025/01/17 - 21:50:53 | 200 |  6.287792753s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:50:58 | 200 |   4.66447636s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:51:02 | 200 |  4.083887703s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:51:07 | 200 |  4.784342921s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:51:11 | 200 |  4.570250853s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:51:15 | 200 |  3.628741831s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:51:19 | 200 |   3.81889233s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:51:25 | 200 |  5.698875782s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:51:25.160+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3291 keep=5 new=2048
+[GIN] 2025/01/17 - 21:51:31 | 200 |  6.430240061s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:51:43 | 200 |  6.244187214s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:51:49 | 200 |  5.652718409s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:51:52 | 200 |  3.548363052s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:51:59 | 200 |   6.23401991s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:52:02 | 200 |  3.206419172s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:52:07 | 200 |  5.505924716s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:52:07.992+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3042 keep=5 new=2048
+[GIN] 2025/01/17 - 21:52:14 | 200 |  6.692448303s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:52:20 | 200 |  6.025704301s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:52:24 | 200 |  3.545128915s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:52:26 | 200 |   2.50864855s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:52:33 | 200 |  6.584534462s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:52:33.485+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2945 keep=5 new=2048
+[GIN] 2025/01/17 - 21:52:40 | 200 |  6.941438916s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:52:46 | 200 |   6.57661847s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:52:49 | 200 |  2.759621666s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:52:55 | 200 |   5.91404437s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:52:58 | 200 |  3.214496979s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:53:05 | 200 |  6.924889113s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:53:12 | 200 |  6.310969797s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:53:15 | 200 |  3.228548214s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:53:15.668+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2470 keep=5 new=2048
+[GIN] 2025/01/17 - 21:53:21 | 200 |  6.187042101s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:53:24 | 200 |  3.076384278s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:53:30 | 200 |  5.359571262s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:53:33 | 200 |  2.975236238s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:53:33.418+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2607 keep=5 new=2048
+[GIN] 2025/01/17 - 21:53:39 | 200 |  5.902215145s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:53:39.329+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3421 keep=5 new=2048
+[GIN] 2025/01/17 - 21:53:45 | 200 |  6.124020775s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:53:51 | 200 |  6.214435932s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:53:56 | 200 |  5.001056054s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:54:03 | 200 |  6.291405975s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:54:03.099+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2058 keep=5 new=2048
+[GIN] 2025/01/17 - 21:54:09 | 200 |  6.474747282s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:54:13 | 200 |  3.928590214s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:54:16 | 200 |  2.528666541s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:54:20 | 200 |  4.324298844s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:54:24 | 200 |  4.543735205s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:54:25.096+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3395 keep=5 new=2048
+[GIN] 2025/01/17 - 21:54:31 | 200 |  6.396624915s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:54:34 | 200 |  3.269952993s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:54:34.816+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2982 keep=5 new=2048
+[GIN] 2025/01/17 - 21:54:41 | 200 |  6.271662365s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:54:45 | 200 |  4.262680384s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:54:50 | 200 |  5.410071181s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:54:53 | 200 |  2.899787556s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:54:57 | 200 |  4.154239254s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:55:02 | 200 |  4.558800577s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:55:02.568+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2244 keep=5 new=2048
+[GIN] 2025/01/17 - 21:55:09 | 200 |  6.636778831s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:55:14 | 200 |  4.937433112s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:55:18 | 200 |  4.395926422s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:55:24 | 200 |  6.353783046s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:55:30 | 200 |  5.119260481s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:55:30.259+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3085 keep=5 new=2048
+[GIN] 2025/01/17 - 21:55:35 | 200 |  5.728849585s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:55:38 | 200 |  2.775822837s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:55:38.838+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2874 keep=5 new=2048
+[GIN] 2025/01/17 - 21:55:44 | 200 |  6.117993424s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:55:49 | 200 |  4.540167548s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:55:55 | 200 |  5.831809114s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:55:55.439+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2213 keep=5 new=2048
+[GIN] 2025/01/17 - 21:56:01 | 200 |  6.358747565s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:56:04 | 200 |  2.978774756s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:56:10 | 200 |  5.774545074s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:56:15 | 200 |  5.297037552s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:56:25 | 200 |  9.904714429s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:56:25.919+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3117 keep=5 new=2048
+[GIN] 2025/01/17 - 21:56:31 | 200 |  5.511267398s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:56:34 | 200 |  2.968124504s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:56:39 | 200 |    5.5598064s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:56:40.050+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2207 keep=5 new=2048
+[GIN] 2025/01/17 - 21:56:46 | 200 |  6.490635299s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:56:54 | 200 |  7.700819638s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:56:59 | 200 |   5.47336573s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:57:02 | 200 |   2.67755019s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:57:08 | 200 |   5.76069276s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:57:11 | 200 |   2.86836101s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:57:16 | 200 |   5.31664596s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:57:16.602+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2424 keep=5 new=2048
+[GIN] 2025/01/17 - 21:57:22 | 200 |  6.039553156s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:57:22.680+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3059 keep=5 new=2048
+[GIN] 2025/01/17 - 21:57:28 | 200 |  6.268521583s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:57:33 | 200 |  4.614367673s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:57:37 | 200 |  3.710051243s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:57:37.382+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3035 keep=5 new=2048
+[GIN] 2025/01/17 - 21:57:43 | 200 |  6.535018271s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:57:48 | 200 |  4.146211941s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:57:52 | 200 |  4.100223658s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:57:56 | 200 |  3.949608341s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:58:00 | 200 |  4.292859078s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:58:03 | 200 |  2.973422646s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:58:08 | 200 |  5.053372061s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:58:14 | 200 |  5.656004613s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:58:14.378+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2769 keep=5 new=2048
+[GIN] 2025/01/17 - 21:58:21 | 200 |  6.692951305s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:58:26 | 200 |   5.52890231s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:58:26.645+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2154 keep=5 new=2048
+[GIN] 2025/01/17 - 21:58:32 | 200 |  5.936005305s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:58:38 | 200 |  5.559657986s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:58:41 | 200 |  3.182494574s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:58:46 | 200 |  4.729396002s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:58:50 | 200 |  4.369202666s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:58:53 | 200 |   3.40912701s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:58:59 | 200 |  5.029650715s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:59:02 | 200 |  3.367717531s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:59:06 | 200 |  3.825970923s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:59:10 | 200 |  4.679903919s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:59:15 | 200 |  4.650242402s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:59:15.766+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2610 keep=5 new=2048
+[GIN] 2025/01/17 - 21:59:21 | 200 |  5.801864941s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:59:21.602+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2284 keep=5 new=2048
+[GIN] 2025/01/17 - 21:59:28 | 200 |  6.484798125s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:59:32 | 200 |  4.525455385s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:59:36 | 200 |  3.784810425s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:59:39 | 200 |  2.800186226s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:59:39.403+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2481 keep=5 new=2048
+[GIN] 2025/01/17 - 21:59:46 | 200 |  6.688808116s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:59:49 | 200 |  3.493276223s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 21:59:54 | 200 |  5.087546892s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T21:59:54.776+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2856 keep=5 new=2048
+[GIN] 2025/01/17 - 22:00:01 | 200 |  6.538039759s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:00:04 | 200 |  3.449476198s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:00:07 | 200 |  3.049340238s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:00:11 | 200 |  3.696845396s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:00:14 | 200 |  3.121279725s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:00:20 | 200 |  5.667952725s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:00:24 | 200 |  4.090481986s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:00:30 | 200 |  6.174521243s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:00:36 | 200 |  5.673136226s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:00:36.608+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2195 keep=5 new=2048
+[GIN] 2025/01/17 - 22:00:43 | 200 |  6.572136436s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:00:48 | 200 |   5.42198253s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:00:53 | 200 |  4.899204137s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:00:58 | 200 |  4.596547771s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:01:01 | 200 |  3.487823426s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:01:05 | 200 |  3.506279441s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:01:08 | 200 |  3.704469603s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:01:12 | 200 |  3.244518268s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:01:15 | 200 |  3.023454026s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:01:19 | 200 |  3.972510519s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:01:25 | 200 |   5.72771971s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:01:27 | 200 |   2.73580886s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:01:33 | 200 |  5.536830165s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:01:38 | 200 |  5.143620285s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:01:38.639+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2845 keep=5 new=2048
+[GIN] 2025/01/17 - 22:01:44 | 200 |  6.333015502s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:01:44.998+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2633 keep=5 new=2048
+[GIN] 2025/01/17 - 22:01:50 | 200 |  5.922427412s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:01:50.953+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2312 keep=5 new=2048
+[GIN] 2025/01/17 - 22:01:56 | 200 |  5.751031626s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:01:56.747+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2545 keep=5 new=2048
+[GIN] 2025/01/17 - 22:02:02 | 200 |  6.278913018s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:02:06 | 200 |  3.873041485s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:02:06.971+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3484 keep=5 new=2048
+[GIN] 2025/01/17 - 22:02:12 | 200 |  6.021522314s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:02:18 | 200 |  5.552471317s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:02:23 | 200 |  4.803786214s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:02:25 | 200 |  2.369753301s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:02:29 | 200 |  4.170718898s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:02:33 | 200 |   3.32512432s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:02:39 | 200 |  6.450098575s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:02:39.933+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2435 keep=5 new=2048
+[GIN] 2025/01/17 - 22:02:45 | 200 |  5.723123026s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:02:49 | 200 |  3.851640661s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:02:49.547+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2066 keep=5 new=2048
+[GIN] 2025/01/17 - 22:02:56 | 200 |  6.555077412s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:03:01 | 200 |  5.181395106s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:03:05 | 200 |  4.411903018s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:03:10 | 200 |  4.380454063s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:03:12 | 200 |  2.782062293s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:03:15 | 200 |  2.848551175s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:03:15.932+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3055 keep=5 new=2048
+[GIN] 2025/01/17 - 22:03:21 | 200 |  5.832554632s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:03:21.774+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2479 keep=5 new=2048
+[GIN] 2025/01/17 - 22:03:27 | 200 |  6.199121733s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:03:38 | 200 | 10.708934957s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:03:43 | 200 |  4.474169699s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:03:47 | 200 |  4.193370907s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:03:52 | 200 |  5.384850965s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:03:55 | 200 |  2.868262429s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:03:59 | 200 |  3.630320305s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:04:03 | 200 |  4.408703092s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:04:08 | 200 |  4.902130608s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:04:12 | 200 |  3.821714774s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:04:19 | 200 |  6.636093096s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:04:19.411+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2180 keep=5 new=2048
+[GIN] 2025/01/17 - 22:04:25 | 200 |  6.296213362s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:04:29 | 200 |  4.182524186s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:04:36 | 200 |  6.499059017s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:04:36.513+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2303 keep=5 new=2048
+[GIN] 2025/01/17 - 22:04:42 | 200 |  6.468656534s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:04:48 | 200 |  5.281120902s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:04:48.346+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2631 keep=5 new=2048
+[GIN] 2025/01/17 - 22:04:54 | 200 |  6.352583917s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:04:58 | 200 |  4.128098072s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:05:03 | 200 |  4.740551193s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:05:03.701+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2561 keep=5 new=2048
+[GIN] 2025/01/17 - 22:05:09 | 200 |  5.915691369s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:05:09.643+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2562 keep=5 new=2048
+[GIN] 2025/01/17 - 22:05:15 | 200 |  6.122556262s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:05:21 | 200 |  5.398960806s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:05:25 | 200 |  3.950764625s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:05:28 | 200 |  2.974171883s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:05:31 | 200 |  3.278795564s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:05:31.553+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2186 keep=5 new=2048
+[GIN] 2025/01/17 - 22:05:37 | 200 |  6.081456066s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:05:37.674+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2903 keep=5 new=2048
+[GIN] 2025/01/17 - 22:05:43 | 200 |  5.953315647s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:05:43.642+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3232 keep=5 new=2048
+[GIN] 2025/01/17 - 22:05:50 | 200 |  6.803456958s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:05:55 | 200 |   5.34748197s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:06:01 | 200 |  5.747378971s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:06:06 | 200 |  4.596806794s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:06:11 | 200 |  4.822072315s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:06:13 | 200 |  2.508941269s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:06:16 | 200 |  3.179956826s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:06:19 | 200 |  2.825775279s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:06:23 | 200 |  3.391791274s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:06:23.183+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2765 keep=5 new=2048
+[GIN] 2025/01/17 - 22:06:29 | 200 |  6.028330631s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:06:34 | 200 |  5.462247756s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:06:40 | 200 |  5.890483656s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:06:46 | 200 |  6.278976946s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:06:52 | 200 |  5.088243327s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:06:55 | 200 |   3.06703806s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:06:59 | 200 |  4.534425161s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:07:05 | 200 |  5.497711633s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:07:08 | 200 |  3.646950037s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:07:08.986+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2795 keep=5 new=2048
+[GIN] 2025/01/17 - 22:07:14 | 200 |  6.036718227s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:07:18 | 200 |  3.562904494s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:07:25 | 200 |   6.51217443s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:07:28 | 200 |  3.194934448s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:07:33 | 200 |  4.616667847s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:07:36 | 200 |  3.149863719s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:07:42 | 200 |  5.825264334s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:07:46 | 200 |  4.315688576s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:07:51 | 200 |  4.988319858s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:07:51.570+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2357 keep=5 new=2048
+[GIN] 2025/01/17 - 22:07:57 | 200 |  6.230484134s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:08:02 | 200 |  4.953431203s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:08:06 | 200 |  3.934366036s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:08:11 | 200 |  4.325105805s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:08:15 | 200 |  4.300620417s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:08:21 | 200 |  5.887022913s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:08:21.373+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2075 keep=5 new=2048
+[GIN] 2025/01/17 - 22:08:27 | 200 |  6.378945362s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:08:31 | 200 |   3.43341141s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:08:31.302+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2762 keep=5 new=2048
+[GIN] 2025/01/17 - 22:08:37 | 200 |  6.094485463s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:08:42 | 200 |  5.531961596s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:08:42.993+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2268 keep=5 new=2048
+[GIN] 2025/01/17 - 22:08:49 | 200 |  6.259539253s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:08:52 | 200 |  3.294162868s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:08:57 | 200 |   5.02896532s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:09:01 | 200 |  3.382690541s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:09:04 | 200 |  3.721479049s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:09:07 | 200 |  2.399360715s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:09:09 | 200 |    2.4383537s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:09:13 | 200 |  3.813159061s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:09:17 | 200 |  4.049660399s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:09:19 | 200 |  2.318979752s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:09:22 | 200 |  2.622585289s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:09:27 | 200 |  4.563388736s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:09:30 | 200 |  3.450698353s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:09:30.823+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2538 keep=5 new=2048
+[GIN] 2025/01/17 - 22:09:37 | 200 |  6.258918076s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:09:40 | 200 |  3.777277091s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:09:45 | 200 |  5.027111799s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:09:49 | 200 |  3.629920393s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:09:55 | 200 |  6.200655473s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:09:59 | 200 |   4.04812419s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:10:04 | 200 |  4.838022908s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:10:04.852+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2110 keep=5 new=2048
+[GIN] 2025/01/17 - 22:10:10 | 200 |   5.96877392s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:10:16 | 200 |  5.968680756s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:10:16.853+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2066 keep=5 new=2048
+[GIN] 2025/01/17 - 22:10:23 | 200 |  6.592690953s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:10:26 | 200 |  3.460295613s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:10:26.979+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2870 keep=5 new=2048
+[GIN] 2025/01/17 - 22:10:33 | 200 |  6.185295756s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:10:38 | 200 |  5.646228928s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:10:42 | 200 |  4.152529942s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:10:46 | 200 |  3.388999424s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:10:49 | 200 |  3.241900394s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:10:53 | 200 |  3.999914299s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:10:56 | 200 |  2.860005906s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:10:56.683+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2431 keep=5 new=2048
+[GIN] 2025/01/17 - 22:11:03 | 200 |  6.730424072s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:11:03.459+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2471 keep=5 new=2048
+[GIN] 2025/01/17 - 22:11:09 | 200 |   6.30096389s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:11:13 | 200 |  4.154617838s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:11:14.003+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2316 keep=5 new=2048
+[GIN] 2025/01/17 - 22:11:20 | 200 |  6.233022444s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:11:20.270+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2757 keep=5 new=2048
+[GIN] 2025/01/17 - 22:11:27 | 200 |  7.215066847s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:11:31 | 200 |  4.020687244s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:11:38 | 200 |  6.567262801s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:11:44 | 200 |  6.228434598s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:11:48 | 200 |  3.670622297s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:11:52 | 200 |  4.245277942s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:11:58 | 200 |  5.698158478s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:11:58.152+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2264 keep=5 new=2048
+[GIN] 2025/01/17 - 22:12:04 | 200 |  6.016976423s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:12:04.199+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2198 keep=5 new=2048
+[GIN] 2025/01/17 - 22:12:10 | 200 |  6.069644896s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:12:14 | 200 |  3.876042858s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:12:18 | 200 |  4.151925459s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:12:23 | 200 |  5.546586427s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:12:30 | 200 |  6.115341879s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:12:31.058+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2748 keep=5 new=2048
+[GIN] 2025/01/17 - 22:12:37 | 200 |  6.122676327s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:12:41 | 200 |  4.170615444s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:12:45 | 200 |   3.71669048s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:12:48 | 200 |  3.570630145s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:12:53 | 200 |  4.371783836s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:12:53.169+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3408 keep=5 new=2048
+[GIN] 2025/01/17 - 22:12:58 | 200 |  5.801118896s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:13:03 | 200 |   4.19944807s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:13:08 | 200 |  5.490240831s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:13:08.800+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2188 keep=5 new=2048
+[GIN] 2025/01/17 - 22:13:14 | 200 |  5.872193754s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:13:19 | 200 |  5.045710454s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:13:22 | 200 |   2.39821987s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:13:25 | 200 |  2.911362273s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:13:31 | 200 |  6.230868992s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:13:38 | 200 |  6.673944649s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:13:42 | 200 |  4.878852989s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:13:49 | 200 |  6.187750824s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:13:55 | 200 |  6.060823671s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:14:00 | 200 |  5.302835531s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:14:05 | 200 |  4.478415727s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:14:10 | 200 |  5.605807698s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:14:16 | 200 |  5.625719355s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:14:25 | 200 |  9.475860442s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:14:30 | 200 |  4.045222749s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:14:36 | 200 |  5.941052494s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:14:41 | 200 |   5.78964741s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:14:47 | 200 |  5.149089522s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:14:49 | 200 |  2.746361411s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:14:55 | 200 |  5.950184151s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:14:59 | 200 |  3.737389211s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:14:59.619+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2209 keep=5 new=2048
+[GIN] 2025/01/17 - 22:15:06 | 200 |  6.976464274s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:15:06.633+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2052 keep=5 new=2048
+[GIN] 2025/01/17 - 22:15:13 | 200 |  6.472265106s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:15:17 | 200 |  4.153439561s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:15:20 | 200 |  3.113771468s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:15:24 | 200 |  4.170810997s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:15:24.681+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2221 keep=5 new=2048
+[GIN] 2025/01/17 - 22:15:30 | 200 |  5.925487702s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:15:30.636+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3395 keep=5 new=2048
+[GIN] 2025/01/17 - 22:15:36 | 200 |  5.595237311s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:15:39 | 200 |  3.527154391s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:15:46 | 200 |  6.279377194s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:15:46.158+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3172 keep=5 new=2048
+[GIN] 2025/01/17 - 22:15:52 | 200 |  6.882277413s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:15:56 | 200 |  3.340956635s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:15:56.438+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2180 keep=5 new=2048
+[GIN] 2025/01/17 - 22:16:02 | 200 |   6.49520402s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:16:08 | 200 |  5.422068587s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:16:14 | 200 |  5.822386689s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:16:19 | 200 |  4.859318028s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:16:21 | 200 |  2.460395306s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:16:26 | 200 |  4.589184474s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:16:28 | 200 |  2.315201511s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:16:28.677+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2162 keep=5 new=2048
+[GIN] 2025/01/17 - 22:16:34 | 200 |  5.639706656s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:16:36 | 200 |  2.664050716s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:16:41 | 200 |  4.034823446s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:16:45 | 200 |  4.011629733s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:16:48 | 200 |  3.486639185s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:16:52 | 200 |  3.806378854s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:16:56 | 200 |  4.271376054s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:17:01 | 200 |  5.162645771s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:17:01.992+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3200 keep=5 new=2048
+[GIN] 2025/01/17 - 22:17:07 | 200 |  5.809582281s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:17:13 | 200 |   5.49102383s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:17:17 | 200 |  4.290383589s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:17:22 | 200 |  4.821249021s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:17:27 | 200 |   4.91378639s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:17:32 | 200 |  5.135333557s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:17:32.672+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2826 keep=5 new=2048
+[GIN] 2025/01/17 - 22:17:38 | 200 |  5.721022056s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:17:41 | 200 |  3.472165601s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:17:45 | 200 |  4.041026538s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:17:49 | 200 |  3.713251038s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:17:49.754+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2286 keep=5 new=2048
+[GIN] 2025/01/17 - 22:17:55 | 200 |  5.756441614s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:17:59 | 200 |  4.293066767s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:18:05 | 200 |  5.357549828s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:18:05.265+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2327 keep=5 new=2048
+[GIN] 2025/01/17 - 22:18:11 | 200 |  6.459467339s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:18:17 | 200 |  5.663289637s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:18:20 | 200 |  2.735963654s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:18:25 | 200 |  5.362808459s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:18:29 | 200 |  3.552424557s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:18:34 | 200 |  4.987803356s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:18:38 | 200 |  4.414935755s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:18:43 | 200 |  4.636162534s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:18:46 | 200 |  3.497615974s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:18:52 | 200 |  5.673564337s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:18:57 | 200 |  4.552142154s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:19:02 | 200 |  5.777731562s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:19:02.982+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2139 keep=5 new=2048
+[GIN] 2025/01/17 - 22:19:09 | 200 |  6.828782396s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:19:16 | 200 |  6.433672752s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:19:20 | 200 |  4.687968426s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:19:24 | 200 |  3.834170393s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:19:28 | 200 |  3.503080115s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:19:34 | 200 |  5.796541512s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:19:34.310+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2283 keep=5 new=2048
+[GIN] 2025/01/17 - 22:19:40 | 200 |  6.234269195s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:19:40.587+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2584 keep=5 new=2048
+[GIN] 2025/01/17 - 22:19:46 | 200 |    6.2217189s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:19:51 | 200 |  5.182465618s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:19:56 | 200 |    4.1891288s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:20:01 | 200 |   5.38618405s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:20:01.696+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2638 keep=5 new=2048
+[GIN] 2025/01/17 - 22:20:07 | 200 |  6.252775423s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:20:13 | 200 |  5.956067039s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:20:16 | 200 |  2.428306371s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:20:19 | 200 |  3.550822283s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:20:23 | 200 |  3.169195226s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:20:26 | 200 |   3.17985132s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:20:26.451+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2184 keep=5 new=2048
+[GIN] 2025/01/17 - 22:20:32 | 200 |   6.00371139s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:20:39 | 200 |  6.699250499s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:20:39.214+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2202 keep=5 new=2048
+[GIN] 2025/01/17 - 22:20:46 | 200 |  6.883168239s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:20:50 | 200 |  4.399931288s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:20:55 | 200 |  4.582242876s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:20:58 | 200 |  3.366284407s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:21:01 | 200 |  3.143597744s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:21:06 | 200 |  4.576636402s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:21:10 | 200 |  4.410537448s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:21:14 | 200 |  4.191646878s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:21:15.035+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2341 keep=5 new=2048
+[GIN] 2025/01/17 - 22:21:20 | 200 |   5.94508872s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:21:21.025+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2670 keep=5 new=2048
+[GIN] 2025/01/17 - 22:21:26 | 200 |  5.874228002s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:21:33 | 200 |  6.615696514s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:21:33.596+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2141 keep=5 new=2048
+[GIN] 2025/01/17 - 22:21:39 | 200 |  6.393272094s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:21:44 | 200 |  4.669036714s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:21:44.721+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2178 keep=5 new=2048
+[GIN] 2025/01/17 - 22:21:51 | 200 |  6.638016584s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:21:55 | 200 |  4.350933016s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:22:00 | 200 |  4.516310737s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:22:06 | 200 |  5.976714171s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:22:09 | 200 |    3.2101836s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:22:14 | 200 |  5.405299584s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:22:18 | 200 |  3.903670097s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:22:24 | 200 |   5.05457841s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:22:28 | 200 |  4.238748865s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:22:34 | 200 |  6.559552978s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:22:39 | 200 |  4.189516192s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:22:42 | 200 |  3.535977951s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:22:45 | 200 |  3.130990532s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:22:45.993+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2841 keep=5 new=2048
+[GIN] 2025/01/17 - 22:22:52 | 200 |  6.268343737s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:22:52.296+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2693 keep=5 new=2048
+[GIN] 2025/01/17 - 22:22:58 | 200 |  6.274754083s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:23:04 | 200 |  5.474839372s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:23:06 | 200 |  2.764761984s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:23:13 | 200 |  6.403133561s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:23:17 | 200 |  4.072774093s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:23:17.449+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2651 keep=5 new=2048
+[GIN] 2025/01/17 - 22:23:23 | 200 |  5.887934919s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:23:28 | 200 |   4.73959365s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:23:33 | 200 |  5.100902723s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:23:33.276+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2350 keep=5 new=2048
+[GIN] 2025/01/17 - 22:23:39 | 200 |  6.413539432s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:23:46 | 200 |  6.575005249s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:23:50 | 200 |  3.853427046s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:23:54 | 200 |  4.272100705s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:23:54.525+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3134 keep=5 new=2048
+[GIN] 2025/01/17 - 22:24:00 | 200 |  5.984052982s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:24:00.514+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2068 keep=5 new=2048
+[GIN] 2025/01/17 - 22:24:07 | 200 |  6.881899733s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:24:09 | 200 |  2.580918919s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:24:16 | 200 |  6.672101827s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:24:21 | 200 |  5.137369256s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:24:28 | 200 |  6.148377137s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:24:28.147+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2697 keep=5 new=2048
+[GIN] 2025/01/17 - 22:24:34 | 200 |  5.967467045s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:24:39 | 200 |  5.813459064s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:24:43 | 200 |  3.641101471s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:24:47 | 200 |  3.956439429s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:24:47.670+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2161 keep=5 new=2048
+[GIN] 2025/01/17 - 22:24:54 | 200 |  6.635142092s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:24:59 | 200 |  5.579977863s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:25:04 | 200 |  4.709707663s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:25:08 | 200 |  3.577712089s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:25:13 | 200 |  5.176308062s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:25:16 | 200 |  2.680461092s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:25:20 | 200 |  4.614961994s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:25:26 | 200 |  5.697889895s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:25:30 | 200 |  4.037211402s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:25:33 | 200 |  3.196324443s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:25:41 | 200 |  7.413664766s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:25:46 | 200 |  5.690886257s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:25:53 | 200 |  5.972739604s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:25:58 | 200 |  5.111405672s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:26:01 | 200 |  3.678462213s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:26:05 | 200 |  3.341886185s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:26:09 | 200 |  4.304244638s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:26:12 | 200 |  3.133390493s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:26:18 | 200 |  5.659148074s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:26:24 | 200 |  5.809910387s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:26:28 | 200 |  3.788987457s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:26:32 | 200 |  4.305405866s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:26:36 | 200 |  4.430309641s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:26:41 | 200 |  4.672445939s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:26:41.711+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2987 keep=5 new=2048
+[GIN] 2025/01/17 - 22:26:48 | 200 |   6.66952736s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:26:48.421+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2275 keep=5 new=2048
+[GIN] 2025/01/17 - 22:26:54 | 200 |  6.574423708s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:27:01 | 200 |  6.140795501s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:27:05 | 200 |  4.458883804s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:27:11 | 200 |  6.030362521s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:27:11.761+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2967 keep=5 new=2048
+[GIN] 2025/01/17 - 22:27:17 | 200 |  5.888901425s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:27:22 | 200 |  4.853611046s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:27:27 | 200 |  5.301162895s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:27:32 | 200 |  4.796332325s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:27:39 | 200 |  6.988173696s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:27:50 | 200 | 10.761214495s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:27:50.523+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2708 keep=5 new=2048
+[GIN] 2025/01/17 - 22:27:56 | 200 |  6.191975158s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:28:02 | 200 |  5.950955796s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:28:07 | 200 |  4.649349207s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:28:12 | 200 |  4.912541423s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:28:15 | 200 |  3.588451145s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:28:15.983+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2917 keep=5 new=2048
+[GIN] 2025/01/17 - 22:28:22 | 200 |  6.408505396s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:28:27 | 200 |  4.861037414s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:28:31 | 200 |  4.390016497s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:28:37 | 200 |  6.017411405s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:28:37.787+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2344 keep=5 new=2048
+[GIN] 2025/01/17 - 22:28:44 | 200 |  6.543823962s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:28:50 | 200 |  6.100282371s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:28:53 | 200 |  3.245784261s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:28:58 | 200 |  4.648462194s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:29:02 | 200 |  4.350995869s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:29:14 | 200 | 11.474934583s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:29:17 | 200 |  2.876461636s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:29:21 | 200 |  4.728583852s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:29:25 | 200 |  3.233216791s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:29:28 | 200 |  3.351972082s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:29:32 | 200 |  4.220294092s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:29:38 | 200 |  5.226798619s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:29:42 | 200 |  4.761928179s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:29:46 | 200 |  4.047776559s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:29:51 | 200 |  4.463506144s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:29:57 | 200 |  5.512278406s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:30:00 | 200 |  3.419778606s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:30:04 | 200 |  4.123162911s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:30:04.752+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2077 keep=5 new=2048
+[GIN] 2025/01/17 - 22:30:11 | 200 |  6.671279518s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:30:16 | 200 |  5.515750366s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:30:21 | 200 |   4.07709026s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:30:21.121+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2416 keep=5 new=2048
+[GIN] 2025/01/17 - 22:30:27 | 200 |  6.364724053s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:30:30 | 200 |  3.482249442s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:30:37 | 200 |  6.091870972s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:30:42 | 200 |  5.772883292s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:30:45 | 200 |  2.895429376s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:30:49 | 200 |  3.260966046s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:30:54 | 200 |  5.711202192s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:30:58 | 200 |  3.849221857s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:31:02 | 200 |  3.273448248s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:31:02.130+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2479 keep=5 new=2048
+[GIN] 2025/01/17 - 22:31:08 | 200 |    6.7516757s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:31:12 | 200 |  4.017974152s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:31:12.970+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2166 keep=5 new=2048
+[GIN] 2025/01/17 - 22:31:18 | 200 |  6.018353398s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:31:24 | 200 |  5.257362256s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:31:24.344+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2983 keep=5 new=2048
+[GIN] 2025/01/17 - 22:31:30 | 200 |  6.431006588s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:31:34 | 200 |  3.704393707s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:31:38 | 200 |  3.677728042s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:31:42 | 200 |  4.590109013s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:31:47 | 200 |  4.855836782s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:31:52 | 200 |  4.428212208s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:31:57 | 200 |  5.800350009s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:32:01 | 200 |  3.731691357s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:32:05 | 200 |  3.261316044s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:32:10 | 200 |   5.64643493s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:32:14 | 200 |  3.909431472s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:32:17 | 200 |  3.175101826s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:32:17.925+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2397 keep=5 new=2048
+[GIN] 2025/01/17 - 22:32:24 | 200 |  6.256967338s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:32:27 | 200 |  3.814475418s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:32:33 | 200 |  5.687925042s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:32:36 | 200 |  2.901552403s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:32:40 | 200 |  3.386759522s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:32:47 | 200 |  6.951623391s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:32:50 | 200 |  3.469555031s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:32:54 | 200 |  4.047685176s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:33:00 | 200 |  6.106650608s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:33:05 | 200 |  4.381034293s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:33:07 | 200 |  2.526784823s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:33:07.858+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=2121 keep=5 new=2048
+[GIN] 2025/01/17 - 22:33:14 | 200 |  6.422037203s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:33:17 | 200 |  3.161100013s |       127.0.0.1 | POST     "/api/chat"
+time=2025-01-17T22:33:17.515+08:00 level=WARN source=runner.go:129 msg="truncating input prompt" limit=2048 prompt=3356 keep=5 new=2048
+[GIN] 2025/01/17 - 22:33:23 | 200 |  5.637467408s |       127.0.0.1 | POST     "/api/chat"
+[GIN] 2025/01/17 - 22:33:27 | 200 |  4.406812884s |       127.0.0.1 | POST     "/api/chat"
