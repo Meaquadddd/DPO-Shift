@@ -10,8 +10,8 @@
 2. Run MT Bench and generate answer from Model 
  ```Shell
 cd Fastchat/fastchat/llm_judge
-bench_list=(mt_bench ultrafeedback capybara alpacafarm)
-
+bench_list=(mt_bench ultrafeedback capybara)
+bench_choice=0
 folder_path = YOUR_MODEL_PATH
 
 model_id = YOUR_MODEL_ID
@@ -20,7 +20,7 @@ python ./gen_model_answer.py \
         --model-path $folder_path \
         --model-id $model_id \
         --bench-name ${bench_list[$bench_choice]} \
-        --num-gpus-total 8 \
+        --num-gpus-total number_of_your_gpu \
         > gen_answer_print_log.log 2>&1
 
 ```
