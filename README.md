@@ -1,3 +1,8 @@
+# introduction
+
+This 
+<img src="./teaser.pdf" width="1000px"></img>
+
 # Training
 
 1. Our code is developed based on the `alignment-handbook`, please install it following `https://github.com/huggingface/alignment-handbook`
