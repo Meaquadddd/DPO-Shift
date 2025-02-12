@@ -2,7 +2,7 @@
 
 This repository contains the code for our paper [DPO-Shift: Shifting the Distribution of Direct Preference Optimization](https://arxiv.org/abs/2502.07599). We propose a simple method aiming at tackling the widely likelihood displacement phenomenon reported in prior research, where  the probability of chosen responses often decreases during training. Our proposed method strikes a balance between the distribution of the chosen probability and reward margin. The following image provides a brief illsturation for our proposed method. The first row in  represents the SFTed model. The second row corresponds to DPO-Shift, where we observe an increased chosen probability compared to DPO (depicted in the last row). 
 
-<img src="./teaser.png" width="500px"></img>
+<img src="./teaser.png" width="350px"></img>
 
 # Training
 
