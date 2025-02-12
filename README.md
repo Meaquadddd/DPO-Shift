@@ -1,7 +1,7 @@
 # introduction
 
 This 
-<img src="./teaser.png" width="200px"></img>
+<img src="./teaser.png" width="500px"></img>
 
 # Training
 
