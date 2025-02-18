@@ -58,4 +58,4 @@ models                       |                                                  
 | Llama 3-8B DPO-Shift fixed 1.0 | [NoManDeRY/DPO-Shift-Llama-3-8B-Ultrafeedback-fixed-1.0](https://huggingface.co/NoManDeRY/DPO-Shift-Llama-3-8B-Ultrafeedback-fixed-1.0)     | 
 | Llama 3-8B DPO-Shift fixed 0.95 | [NoManDeRY/DPO-Shift-Llama-3-8B-Ultrafeedback-fixed-0.95](https://huggingface.co/NoManDeRY/DPO-Shift-Llama-3-8B-Ultrafeedback-increase-0.95)     | 
 | Llama 3-8B DPO-Shift increase_linear 0.95to1.0 | [NoManDeRY/DPO-Shift-Llama-3-8B-Ultrafeedback-increase_linear_0.95to1.0](https://huggingface.co/NoManDeRY/DPO-Shift-Llama-3-8B-Ultrafeedback-increase_linear_0.95to1.0)     | 
-| Llama 3-8B DPO-Shift decrease_linear 1.0to0.95 | [NoManDeRY/DPO-Shift-Llama-3-8B-Ultrafeedback-decrease_linear_1.0to0.95](https://huggingface.co/NoManDeRY/DPO-Shift-Llama-3-8B-Ultrafeedback-decrease_linear_1.0to0.95)     | 
+| Llama 3-8B DPO-Shift decrease_linear 1.0to0.95 | [NoManDeRY/DPO-Shift-Llama-3-8B-Ultrafeedback-decrease_linear_1.0to0.95](https://huggingface.co/NoManDeRY/DPO-Shift-Llama-3-8B-Ultrafeedback-decrease_linear-1.0to0.95)     | 
