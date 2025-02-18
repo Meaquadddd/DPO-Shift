@@ -44,3 +44,18 @@ set `OLLAMA_BINARY` in `ollama-batch-servers` with your ollama binary path
 Code in this part is developed based on `https://robert-mcdermott.medium.com/large-scale-batch-processing-with-ollama-1e180533fb8a`, users are recommended to read this beautifully written blog.
 
 5. The judgment is recorded in the `judges` folder
+
+
+# Models
+
+Our models have been released on [here](https://huggingface.co/NoManDeRY), due to the limitation of computational resources, we only list part of the models in our preprint:
+
+models                       |                                                                                                           |
+|------------------------------|-----------------------------------------------------------------------------------------------------------|
+| Qwen 2-7B Base SFT          | [NoManDeRY/DPO-Shift-Qwen-2-7B-UltraChat200K-SFT](https://huggingface.co/NoManDeRY/DPO-Shift-Qwen-2-7B-UltraChat200K-SFT)    | 
+| Qwen 2-7B DPO-Shift fixed 1.0         | [NoManDeRY/DPO-Shift-Qwen-2-7B-Ultrafeedback-fixed-1.0](https://huggingface.co/NoManDeRY/DPO-Shift-Qwen-2-7B-Ultrafeedback-fixed-1.0) | 
+| Qwen 2-7B DPO-Shift fixed 0.95         | [NoManDeRY/DPO-Shift-Qwen-2-7B-Ultrafeedback-fixed-0.95](https://huggingface.co/NoManDeRY/DPO-Shift-Qwen-2-7B-Ultrafeedback-fixed-0.95) | 
+| Llama 3-8B DPO-Shift fixed 1.0 | [NoManDeRY/DPO-Shift-Llama-3-8B-Ultrafeedback-fixed-1.0](https://huggingface.co/NoManDeRY/DPO-Shift-Llama-3-8B-Ultrafeedback-fixed-1.0)     | 
+| Llama 3-8B DPO-Shift fixed 0.95 | [NoManDeRY/DPO-Shift-Llama-3-8B-Ultrafeedback-fixed-0.95](https://huggingface.co/NoManDeRY/DPO-Shift-Llama-3-8B-Ultrafeedback-increase-0.95)     | 
+| Llama 3-8B DPO-Shift increase_linear 0.95to1.0 | [NoManDeRY/DPO-Shift-Llama-3-8B-Ultrafeedback-increase_linear_0.95to1.0](https://huggingface.co/NoManDeRY/DPO-Shift-Llama-3-8B-Ultrafeedback-increase_linear_0.95to1.0)     | 
+| Llama 3-8B DPO-Shift decrease_linear 1.0to0.95 | [NoManDeRY/DPO-Shift-Llama-3-8B-Ultrafeedback-decrease_linear_1.0to0.95](https://huggingface.co/NoManDeRY/DPO-Shift-Llama-3-8B-Ultrafeedback-decrease_linear_1.0to0.95)     | 
